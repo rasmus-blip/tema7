@@ -1,0 +1,30 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+
+</head>
+
+<body>
+    <h2>Se i konsollen hvilken tid på dagen det er</h2>
+    <script>
+        let today = new Date()
+        let curHr = today.getHours()
+
+        if (curHr < 5) {
+            console.log("Godnat!");
+        } else if (curHr > 12) {
+            console.log("Goddag!");
+        } else {
+            console.log("God aften!");
+        }
+    </script>
+</body></html>
