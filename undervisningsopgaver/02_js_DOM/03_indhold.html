@@ -100,19 +100,18 @@
         console.log(figurtekst2.textContent);
         figurtekst2.innerHTML = "her er en anden ny tekst!";
 
-        const billede1 = document.querySelector("img");
+        const billede1 = document.querySelector("article:nth-child(1) img");
         billede1.src = "pics/007007290014_24.jpg"
         billede1.setAttribute("alt", "ny alt tekst")
         console.log(billede1);
 
-        const billede2 = document.querySelector("#img2");
+        const billede2 = document.querySelector("article:nth-child(2) img");
         billede2.src = "pics/007007290022_32.jpg";
         billede2.setAttribute("alt", "anden ny alt tekst")
         console.log(billede2);
 
         const section1 = document.querySelector("section");
         console.log(section1);
-
 
         const section2 = document.querySelector("section:nth-child(2)");
         console.log(section2);
