@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<style>
+    h1,
+    h2 {
+        text-align: center;
+    }
+
+    h1 {
+        border: 1px solid;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    article {
+        border: 1px solid;
+        flex-basis: 500px;
+        width: 50vw;
+        padding: 20px;
+    }
+
+    img {
+        align-self: center;
+    }
+
+
+    footer {
+        border: 1px solid;
+        width: 100vw;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>Titel</h1>
+    </header>
+    <main>
+        <h2>Undertitel</h2>
+        <section>
+            <article id=1>
+                <figure>
+                    <img src="pics/007007240005_12.jpg" alt="flwr">
+                    <h3>Article</h3>
+                    <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae deleniti sint id quas tenetur debitis temporibus fugiat, vel illo corporis aperiam, magnam assumenda suscipit nihil, aut labore consectetur modi.</figcaption>
+                </figure>
+            </article>
+            <article id=2>
+                <figure>
+                    <img src="pics/007007240004_11.jpg" alt="flwr">
+                    <h3 id="#h3_2">Article</h3>
+                    <figcaption id="figcap2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae deleniti sint id quas tenetur debitis temporibus fugiat, vel illo corporis aperiam, magnam assumenda suscipit nihil, aut labore consectetur modi.</figcaption>
+                </figure>
+            </article>
+
+        </section>
+        <footer>This is a footer
+        </footer>
+    </main>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        const overskrift = document.querySelector("h1");
+        console.log(overskrift.textContent);
+        overskrift.textContent = "New title";
+
+        const underoverskrift = document.querySelector("h2");
+        console.log(underoverskrift.textContent);
+        underoverskrift.textContent;
+
+
+        const figur = document.querySelector("figure");
+        console.log(figur);
+        figur.textContent;
+
+        const figurtekst = document.querySelector("figcaption");
+        console.log(figurtekst.textContent);
+        figurtekst.textContent = "her er en ny tekst!";
+
+        const figurtekst2 = document.querySelector("#figcap2");
+        console.log(figurtekst2.textContent);
+        figurtekst2.innerHTML = "her er en anden ny tekst!";
+
+        const billede1 = document.querySelector("img");
+        console.log(billede1);
+
+        const billede2 = document.querySelector("img:nth-child(2)");
+        console.log(billede2);
+
+        const section1 = document.querySelector("section");
+        console.log(section1);
+
+
+        const section2 = document.querySelector("section:nth-child(2)");
+        console.log(section2);
+
+
+
+        const article1 = document.querySelector("article:first-child");
+        console.log(article1.textContent);
+        article1.textContent;
+
+        const article1_h3 = document.querySelector("article:first-child h3");
+        console.log(article1_h3);
+        article1_h3.textContent = "her er en ny titel!"
+
+
+        const article2 = document.querySelector("article:nth-child(2)");
+        console.log(article2.textContent);
+        article2.textContent;
+
+        const article2_h3 = document.querySelector("article:nth-child(2) h3");
+        console.log(article2_h3);
+        article2_h3.textContent = "her er en anden ny titel!";
+
+
+
+        const fod = document.querySelector("footer");
+        console.log(fod.textContent);
+        fod.textContent;
+        fod.innerHTML = "her er en fed fod!";
+    </script>
+</body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
