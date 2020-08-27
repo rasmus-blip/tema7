@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <section id="liste">
+
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        let dyr = [{
+            "navn": "gris",
+            "type": "patterdyr",
+            "levested": "svinesti",
+            "billede": "http://mabe-kea.dk/E19/pics/pig.png"
+        }, {
+            "navn": "frø",
+            "type": "krybdyr",
+            "levested": "vand",
+            "billede": "http://mabe-kea.dk/E19/pics/frog.png"
+        }, {
+            "navn": "ræv",
+            "type": "pattedyr",
+            "levested": "skoven",
+            "billede": "http://mabe-kea.dk/E19/pics/fox.png"
+        }, {
+            "navn": "sild",
+            "type": "fisk",
+            "levested": "vand",
+            "billede": "http://mabe-kea.dk/E19/pics/sild.jpg"
+        }, {
+            "navn": "krokodille",
+            "type": "krybdyr",
+            "levested": "vand",
+            "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg"
+        }];
+
+        console.log(dyr);
+
+        function start() {
+
+            const listevisning = document.querySelector("#liste");
+            dyr.forEach(dyr => {
+                listevisning.innerHTML += `<p> ${dyr.navn} ${dyr.type} ${dyr.levested} ${dyr.billede}</p>`
+            })
+
+
+        }
+    </script>
+</body></html>
