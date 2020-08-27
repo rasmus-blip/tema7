@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: #e2e2e2;
+    }
+
+    article {
+        flex-basis: 400px;
+        padding-bottom: 30px;
+    }
+
+    #alfabet {
+        font-size: 0.89rem;
+        text-align: center;
+        font-family: sans-serif;
+        padding-bottom: 40px;
+        padding-top: 10px;
+    }
+
+    h2:hover {
+        color: gray;
+    }
+
+    img {
+        width: 100%;
+        box-shadow: 10px 10px 8px -6px rgba(0, 0, 0, 0.75)
+    }
+</style>
+
+<body>
+    <section id="liste">
+        <h2 id="alfabet">A B C E D F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å</h2>
+        <template>
+            <article class="film">
+                <img src="" alt="" class="billede">
+                <h3></h3>
+                <p class="beskrivelse"> </p>
+                <!--
+                <p class="land"></p>
+                <p class="længde"></p>
+                <p class="årstal"></p>
+-->
+            </article>
+        </template>
+
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        let film = [{
+            "titel": "A Calling",
+            "instruktør": "Christian Bengtson | ",
+            "land": "Danmark | ",
+            "længde": "20 min | ",
+            "årstal": "2019 | ",
+            "billede": "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/W6dOqabNhHKBPXxxKKEZRA84-360.jpg"
+        }, {
+            "titel": "A Hole In My Head | ",
+            "instruktør": "Mees Peijnenburg | ",
+            "land": "Holland | ",
+            "længde": "9 min | ",
+            "årstal": "2015 | ",
+            "billede": "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/Q8K1pZrOs03Q0IrDkBwGVu5r-360.jpg"
+        }, {
+            "titel": "A Place In The Sun - 110 year after the genocide",
+            "instruktør": "Christian Zipfel | ",
+            "land": "Tyskland | ",
+            "længde": "20 min | ",
+            "årstal": "2018 | ",
+            "billede": "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/hUd4SdGQ8I23ovxWnGtBz4Ck-360.jpg"
+        }, {
+            "titel": "A Tower of Two | ",
+            "instruktør": "Jacob Krzysxtof Glogowski | ",
+            "land": "Danmark | ",
+            "længde": "21 min | ",
+            "årstal": "2019 | ",
+            "billede": "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/Zdt2ODEqSVOkNe8nUaSSu8kd-360.jpg"
+        }, {
+            "titel": "A Worthy Man | ",
+            "instruktør": "Kristian Håskjold | ",
+            "land": "Danmark | ",
+            "længde": "19 min | ",
+            "årstal": "2018 | ",
+            "billede": "https://odense-film-festival.s3.eu-central-1.amazonaws.com/media/2iUOgQpixgIQCxyLtY6KiYuU-360.jpg"
+        }];
+
+
+        console.log(film);
+
+
+        function start() {
+
+            //            const listevisning = document.querySelector("#liste");
+            //            dyr.forEach(film => {
+            //                listevisning.innerHTML += `<p> <u><b>${film.titel}</b></u>  |  ${film.instruktør}  |  ${film.land}</p> <img src="${film.billede}" alt="">`
+            //            })
+
+            let container = document.querySelector("#liste");
+            let filmTemplate = document.querySelector("template");
+            film.forEach(film => {
+                let klon = filmTemplate.cloneNode(true).content;
+                klon.querySelector("h3").textContent = film.titel;
+                klon.querySelector(".beskrivelse").textContent = `${film.instruktør} | ${film.land} | ${film.længde} | ${film.årstal}`;
+                //                klon.querySelector(".instruktør").textContent = film.instruktør;
+                //                klon.querySelector(".land").textContent = film.land;
+                //                klon.querySelector(".længde").textContent = film.længde;
+                //                klon.querySelector(".årstal").textContent = film.årstal;
+                klon.querySelector(".billede").src = film.billede;
+                container.appendChild(klon);
+            })
+
+
+
+
+        }
+    </script>
+</body></html>
