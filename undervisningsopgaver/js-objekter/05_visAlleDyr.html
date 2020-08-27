@@ -18,7 +18,7 @@
 
         let dyr = [{
             "navn": "gris",
-            "type": "patterdyr",
+            "type": "pattedyr",
             "levested": "svinesti",
             "billede": "http://mabe-kea.dk/E19/pics/pig.png"
         }, {
@@ -49,7 +49,7 @@
 
             const listevisning = document.querySelector("#liste");
             dyr.forEach(dyr => {
-                listevisning.innerHTML += `<p> ${dyr.navn} ${dyr.type} ${dyr.levested} ${dyr.billede}</p>`
+                listevisning.innerHTML += `<p> <u><b>${dyr.navn}</b></u> type: ${dyr.type} levested: ${dyr.levested}</p> <img src="${dyr.billede}" alt="">`
             })
 
 
