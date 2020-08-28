@@ -119,10 +119,6 @@
                 let klon = filmTemplate.cloneNode(true).content;
                 klon.querySelector("h3").textContent = film.titel;
                 klon.querySelector(".beskrivelse").textContent = `${film.instruktør} |  ${film.land} | ${film.længde} | ${film.årstal}`;
-                //                klon.querySelector(".instruktør").textContent = film.instruktør;
-                //                klon.querySelector(".land").textContent = film.land;
-                //                klon.querySelector(".længde").textContent = film.længde;
-                //                klon.querySelector(".årstal").textContent = film.årstal;
                 klon.querySelector(".billede").src = film.billede;
                 container.appendChild(klon);
             })
