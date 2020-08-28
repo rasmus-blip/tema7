@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+
+
+
+    section {
+        width: 90vw;
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-gap: 30px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    }
+
+    article {
+        border: 3px solid;
+        box-shadow: 4px 4px 4px;
+
+    }
+
+    h1 {
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 3rem;
+
+    }
+
+    h2 {
+        font-family: "Courier New", serif;
+    }
+
+
+    p {
+        font-family: "Courier New", serif;
+        padding: 10px;
+        margin: 10px 0 0 10px;
+    }
+
+
+    img {
+        width: 100%;
+
+    }
+</style>
+
+<body>
+    <h1>Persongalleri:</h1>
+    <section id="liste">
+        <template>
+            <article class="person">
+                <img src="" alt="" class="billede">
+                <p class="navn">Navn: </p>
+                <p class="efternavn">Efternavn: </p>
+                <p class="køn">Køn: </p>
+                <p class="alder">Alder: </p>
+                <p class="religion">Religion </p>
+                <p class="hobby">Hobby: </p>
+                <p class="kæledyr">Kæledyr: </p>
+                <p class="job">Job: </p>
+                <p class="by">By: </p>
+                <p class="land">Land: </p>
+            </article>
+        </template>
+
+    </section>
+
+    <script>
+        const link = "https://spreadsheets.google.com/feeds/list/1mtHhpoEkYqVqr1TSnKQ1_sQZWI7FRVjcw3H1oatDOVQ/od6/public/values?alt=json";
+
+        async function hentdata() {
+            const respons = await fetch(link);
+            const person = await respons.json();
+            vis(person);
+        }
+
+        function vis(person) {
+            let container = document.querySelector("#liste");
+            let personTemplate = document.querySelector("template");
+            console.log(person);
+
+            person.feed.entry.forEach(person => {
+                const klon = personTemplate.cloneNode(true).content;
+                klon.querySelector(".navn").textContent += person.gsx$navn.$t;
+                klon.querySelector(".billede").src = person.gsx$billede.$t;
+                klon.querySelector(".efternavn").textContent += person.gsx$efternavn.$t;
+                klon.querySelector(".køn").textContent += person.gsx$køn.$t;
+                klon.querySelector(".alder").textContent += person.gsx$alder.$t;
+                klon.querySelector(".religion").textContent += person.gsx$religion.$t;
+                klon.querySelector(".hobby").textContent += person.gsx$hobby.$t;
+                klon.querySelector(".kæledyr").textContent += person.gsx$kæledyr.$t;
+                klon.querySelector(".job").textContent += person.gsx$job.$t;
+                klon.querySelector(".by").textContent += person.gsx$by.$t;
+                klon.querySelector(".land").textContent += person.gsx$land.$t;
+                container.appendChild(klon);
+            })
+        }
+
+        hentdata();
+    </script>
+</body></html>
