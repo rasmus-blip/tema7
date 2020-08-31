@@ -14,6 +14,11 @@
         padding: 0px;
     }
 
+    @font-face {
+        font-family: russian;
+        src: url(fonts/webfontkit-20200831-062403/russianland-webfont.woff2);
+    }
+
     body {
         background-color: aliceblue;
     }
@@ -66,9 +71,10 @@
 
     h1 {
         text-align: center;
-        font-family: "Courier New", serif;
-        font-size: 3.5rem;
-        text-shadow: 4px 15px 7px;
+        font-family: "russian", serif;
+        font-size: 10rem;
+        color: red;
+        text-shadow: 2px 2px 2px #900101;
 
 
     }
@@ -111,7 +117,6 @@
 
 <body>
     <h1>BISTRO BABUSHKA</h1>
-    <h3>Alle</h3>
     <header>
 
         <nav>
@@ -122,8 +127,6 @@
             <button class="filter" data-kategori="drikkevarer">Drikkevarer</button>
         </nav>
     </header>
-
-
     <h2>Retter:</h2>
     <section id="liste">
     </section>
@@ -132,7 +135,7 @@
             <b>
                 <p class="navn"></p>
             </b>
-            <img src="imgs/small/groggiroshorn-sm.jpg" alt="" class="billede">
+            <img src="" alt="" class="billede">
             <p class="kategori">Kategori: </p>
             <u>
                 <p class="pris">Pris: </p>
