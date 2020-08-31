@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Css Grid</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr, minmax(300px);
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-gap: 1px 1px;
+            grid-template-areas: ". . . ."". . . ."". . . .";
+
+
+        }
+
+        .item {}
+
+        .item-a {}
+
+        .item-b {}
+
+        .item-c {}
+
+        .item-d {}
+
+        @media screen and (min-width:768px) {}
+    </style>
+
+</head>
+
+<body>
+    <main class="container">
+        <div class="item item-a">A</div>
+        <div class="item item-b">B</div>
+        <div class="item item-c">C</div>
+        <div class="item item-d">D</div>
+    </main>
+
+</body></html>

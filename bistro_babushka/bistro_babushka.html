@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bistro Babushka</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    body {
+        background-color: aliceblue;
+    }
+
+    header {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    nav {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    nav button {
+        padding: 10px;
+        text-decoration: none;
+        font-family: "courier new", serif;
+
+    }
+
+    button:hover {
+        color: grey;
+    }
+
+
+    section {
+        width: 90vw;
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-gap: 30px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    }
+
+    article {
+        height: auto;
+        width: auto;
+        border: 3px solid #363636;
+        border-radius: 6px;
+        box-shadow: 4px 4px 4px;
+
+    }
+
+
+    h1 {
+        text-align: center;
+        font-family: "Courier New", serif;
+        font-size: 3.5rem;
+        text-shadow: 4px 15px 7px;
+
+
+    }
+
+
+    h3 {
+        text-align: center;
+        font-family: "Courier New", serif;
+        font-size: 2.5rem;
+
+    }
+
+    h2 {
+        font-family: "Courier New", serif;
+        text-align: center;
+    }
+
+
+    p {
+        font-family: "Courier New", serif;
+        padding: 10px;
+        margin: 10px 0 0 10px;
+    }
+
+    .billede {
+        width: 100%;
+
+    }
+
+    .valgt {
+        background-color: #5d5c5c;
+    }
+</style>
+
+<body>
+    <h1>BISTRO BABUSHKA</h1>
+    <h3>Alle</h3>
+    <header>
+
+        <nav>
+            <button class="filter valgt" data-kategori="alle">Alle</button>
+            <button class="filter" data-kategori="forretter">Foretter</button>
+            <button class="filter" data-kategori="hovedretter">Hovedretter</button>
+            <button class="filter" data-kategori="desserter">Desserter</button>
+            <button class="filter" data-kategori="drikkevarer">Drikkevarer</button>
+        </nav>
+    </header>
+
+
+    <h2>Retter:</h2>
+    <section id="liste">
+    </section>
+    <template>
+        <article class="ret">
+            <p class="kategori">Kategori: </p>
+            <p class="navn">Navn: </p>
+            <p class="pris">Pris: </p>
+            <p class="kort">Kort: </p>
+            <p class="lang">Lang: </p>
+            <p class="oprindelse">Oprindelse: </p>
+            <img src="imgs/small/groggiroshorn-sm.jpg" alt="" class="billede">
+        </article>
+    </template>
+
+
+    <script>
+        let filter = "alle";
+        let retter;
+        document.addEventListener("DOMContentLoaded", hentdata);
+        const link = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
+
+        async function hentdata() {
+            const respons = await fetch(link);
+            retter = await respons.json();
+            addEventListenersToButtons();
+            visRetter();
+        }
+
+        function visRetter() {
+            const container = document.querySelector("#liste");
+            const retTemplate = document.querySelector("template");
+            container.innerHTML = "";
+            retter.feed.entry.forEach(ret => {
+                if (filter == "alle" || filter == ret.gsx$kategori.$t) {
+                    let klon = retTemplate.cloneNode(true).content;
+                    klon.querySelector(".kategori").textContent += ret.gsx$kategori.$t;
+                    //                    klon.querySelector(".billede").src = ret.gsx$billede.$t;
+                    klon.querySelector(".navn").textContent += ret.gsx$navn.$t;
+                    klon.querySelector(".pris").textContent += ret.gsx$pris.$t + "kr.";
+                    klon.querySelector(".kort").textContent += ret.gsx$kort.$t;
+                    klon.querySelector(".lang").textContent += ret.gsx$lang.$t;
+                    klon.querySelector(".oprindelse").textContent += ret.gsx$oprindelse.$t;
+                    klon.querySelector(".billede").src = `imgs/small/${
+                        ret.gsx$billede.$t}` + "-sm.jpg";
+                    container.appendChild(klon);
+
+
+                }
+            })
+        }
+
+        function addEventListenersToButtons() {
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.addEventListener("click", filterBTNs);
+            })
+        }
+
+
+
+        function filterBTNs() {
+            filter = this.dataset.kategori;
+            document.querySelector("h3").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.classList.remove("valgt");
+            })
+            this.classList.add("valgt");
+            visRetter();
+
+        }
+    </script>
+</body></html>
