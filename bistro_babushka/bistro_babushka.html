@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bistro Babushka</title>
     <link rel="stylesheet" href="">
+    <link rel="icon" type="image/png" href="pics/Hammer_and_sickle.svg">
 </head>
 
 <style>
@@ -19,8 +20,14 @@
         src: url(fonts/webfontkit-20200831-062403/russianland-webfont.woff2);
     }
 
+    @font-face {
+        font-family: russian2;
+        src: url(fonts/font2/russian-webfont.woff2);
+    }
+
     body {
         background-color: aliceblue;
+        scroll-behavior: smooth;
     }
 
     header {
@@ -36,16 +43,19 @@
 
     }
 
+
     nav button {
-        padding: 10px;
+        padding: 20px;
         text-decoration: none;
-        font-family: "courier new", serif;
-        box-shadow: 4px 4px 4px;
+        font-family: "russian2", sans-serif;
+        width: 17vw;
+        font-size: 2rem;
+        text-align: center;
 
     }
 
     button:hover {
-        color: #ff0000;
+        color: #313131;
     }
 
 
@@ -62,10 +72,19 @@
     article {
         height: auto;
         width: auto;
-        border: 3px solid #363636;
+        border: 3px solid rgba(23, 23, 23, 0.03);
         border-radius: 6px;
-        box-shadow: 4px 4px 4px;
+        box-shadow: 3px 3px 3px;
 
+    }
+
+    main {
+        padding-bottom: 10vw;
+    }
+
+    footer {
+        background-color: red;
+        color: yellow;
     }
 
 
@@ -74,17 +93,28 @@
         font-family: "russian", serif;
         font-size: 10rem;
         color: red;
-        text-shadow: 2px 2px 2px #900101;
+        text-shadow: 2px 2px 2px #4d0000;
+        position: relative;
+        top: 6vw;
+
 
 
 
     }
 
 
+
+    a {
+        text-decoration: none;
+    }
+
+
     h3 {
         text-align: center;
-        font-family: "Courier New", serif;
+        font-family: "russian2", serif;
         font-size: 2.5rem;
+        padding: 5vw;
+        letter-spacing: 5px;
 
     }
 
@@ -112,13 +142,14 @@
     }
 
     .valgt {
-        background-color: rgb(195, 195, 195);
+        background-color: #000000;
+        color: white;
     }
 
     #splash {
         max-width: none;
         width: 100%;
-        height: 30vh;
+        height: 40vh;
         background-image: url(https://thehill.com/sites/default/files/article_images/russia-kremlin-getty.jpg);
         background-size: cover;
         background-position: 48% 50%;
@@ -127,13 +158,28 @@
     @media (max-width: 750px) {
 
         h1 {
+            font-size: 6.5rem;
+            position: relative;
+            top: 6vw;
+
+        }
+
+        #splash {
+            background-position: 28% 100%;
+            height: 20vh;
+
+
+        }
+
+
+
+        nav button {
+            padding: 10px;
+            box-shadow: 2px 2px 2px;
+            font-family: "russian2", sans-serif;
+            width: 100%;
+            font-size: 0.8rem;
             text-align: center;
-            font-family: "russian", serif;
-            font-size: 5rem;
-            color: red;
-            text-shadow: 2px 2px 2px #900101;
-
-
 
         }
 
@@ -142,13 +188,15 @@
 
 <body>
     <div id=splash>
-        <h1>BISTRO BABUSHKA</h1>
+        <a href="bistro_babushka.html">
+            <h1>BISTRO BABUSHKA</h1>
+        </a>
     </div>
     <header>
 
         <nav>
             <button class="filter valgt" data-kategori="alle">Alle</button>
-            <button class="filter" data-kategori="forretter">Foretter</button>
+            <button class="filter" data-kategori="forretter">Forretter</button>
             <button class="filter" data-kategori="hovedretter">Hovedretter</button>
             <button class="filter" data-kategori="desserter">Desserter</button>
             <button class="filter" data-kategori="drikkevarer">Drikkevarer</button>
@@ -157,21 +205,27 @@
     <h3></h3>
     <section id="liste">
     </section>
-    <template>
-        <article class="ret">
-            <b>
-                <p class="navn"></p>
-            </b>
-            <img src="" alt="" class="billede">
-            <p class="kategori">Kategori: </p>
-            <u>
-                <p class="pris">Pris: </p>
-            </u>
-            <p class="kort">Kort: </p>
-            <p class="lang">Lang: </p>
-            <p class="oprindelse">Oprindelse: </p>
-        </article>
-    </template>
+    <main>
+        <template>
+            <article class="ret">
+                <b>
+                    <p class="navn"></p>
+                </b>
+                <img src="" alt="" class="billede">
+                <p class="kategori">Kategori: </p>
+                <u>
+                    <p class="pris">Pris: </p>
+                </u>
+                <p class="kort">Kort: </p>
+                <p class="lang">Lang: </p>
+                <p class="oprindelse">Oprindelse: </p>
+            </article>
+        </template>
+    </main>
+
+    <footer>
+        <h3>Lavet af Rasmus MOLLER</h3>
+    </footer>
 
     <script>
         let filter = "alle";
