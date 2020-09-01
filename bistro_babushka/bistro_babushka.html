@@ -26,7 +26,7 @@
     }
 
     body {
-        background-color: aliceblue;
+        background-color: #ebebeb;
         scroll-behavior: smooth;
     }
 
@@ -37,9 +37,10 @@
     }
 
     nav {
-        padding: 20px;
         display: flex;
         justify-content: center;
+        width: 77%;
+
 
     }
 
@@ -51,6 +52,7 @@
         width: 17vw;
         font-size: 2rem;
         text-align: center;
+        cursor: pointer;
 
     }
 
@@ -59,7 +61,7 @@
     }
 
 
-    section {
+    #liste {
         width: 90vw;
         max-width: 1100px;
         margin: 0 auto;
@@ -69,12 +71,12 @@
 
     }
 
-    article {
+    .ret {
         height: auto;
         width: auto;
         border: 3px solid rgba(23, 23, 23, 0.03);
         border-radius: 6px;
-        box-shadow: 3px 3px 3px;
+        box-shadow: 3px 3px 3px rgba(114, 114, 114, 0.49);
 
     }
 
@@ -92,8 +94,8 @@
         text-align: center;
         font-family: "russian", serif;
         font-size: 10rem;
-        color: red;
-        text-shadow: 2px 2px 2px #4d0000;
+        color: yellow;
+        text-shadow: 3px 3px 3px #4d0000;
         position: relative;
         top: 6vw;
 
@@ -112,9 +114,10 @@
     h3 {
         text-align: center;
         font-family: "russian2", serif;
-        font-size: 2.5rem;
+        font-size: 3rem;
         padding: 5vw;
         letter-spacing: 5px;
+        text-shadow: 3px 3px 3px #bebdbd;
 
     }
 
@@ -155,7 +158,50 @@
         background-position: 48% 50%;
     }
 
-    @media (max-width: 750px) {
+    #popup {
+        width: 100vw;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        position: fixed;
+        background-color: rgba(0, 0, 0, .8);
+        display: none;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    #pop {
+        width: 90vw;
+        height: 90vh;
+        background-color: white;
+        position: relative;
+        z-index: 1;
+        margin: 5vw;
+        border-radius: 10px;
+
+    }
+
+    #luk {
+        position: fixed;
+        top: 5vw;
+        right: 12vw;
+        background-color: #9f9f9f;
+        color: black;
+        border-radius: 5px;
+        padding: 0.5em;
+        font-family: "russian2", sans-serif;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    .pop_billede {
+        margin: 7vw;
+    }
+
+
+
+    @media (max-width: 950px) {
 
         h1 {
             font-size: 6.5rem;
@@ -165,35 +211,81 @@
         }
 
         #splash {
-            background-position: 28% 100%;
+            background-position: 18% 100%;
             height: 20vh;
 
 
+        }
+
+        nav {
+            width: 77%;
         }
 
 
 
         nav button {
             padding: 10px;
-            box-shadow: 2px 2px 2px;
             font-family: "russian2", sans-serif;
             width: 100%;
-            font-size: 0.8rem;
+            font-size: 1.1rem;
             text-align: center;
 
         }
 
+        footer h3 {
+            font-size: 2rem;
+
+        }
+
+        #luk {
+            position: fixed;
+            top: 9vw;
+            right: 8vw;
+            background-color: #9f9f9f;
+            color: black;
+            border-radius: 5px;
+            padding: 0.5em;
+            font-family: "russian2", sans-serif;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .pop_billede {
+            margin: 25px;
+        }
+
     }
+
 </style>
 
 <body>
     <div id=splash>
         <a href="bistro_babushka.html">
-            <h1>BISTRO BABUSHKA</h1>
+            <h1>BISTRO BABUSHKA </h1>
         </a>
     </div>
-    <header>
 
+    <section id="popup">
+        <article id="pop">
+            <div id="luk">X</div>
+            <b>
+                <p>Navn: <span class="pop_navn"></span></p>
+            </b>
+            <p>Kategori: <span class="pop_kategori"></span></p>
+            <p>Beskrivelse: <span class="pop_kort"></span></p>
+            <p>Lang: <span class="pop_lang"></span></p>
+            <p>Oprindelse: <span class="pop_oprindelse"></span></p>
+            <u>
+                <p>Pris: <span class="pop_pris"></span></p>
+            </u>
+
+            <img src="" alt="" class="pop_billede">
+
+        </article>
+
+    </section>
+
+    <header>
         <nav>
             <button class="filter valgt" data-kategori="alle">Alle</button>
             <button class="filter" data-kategori="forretter">Forretter</button>
@@ -213,15 +305,17 @@
                 </b>
                 <img src="" alt="" class="billede">
                 <p class="kategori">Kategori: </p>
-                <u>
-                    <p class="pris">Pris: </p>
-                </u>
                 <p class="kort">Kort: </p>
                 <p class="lang">Lang: </p>
                 <p class="oprindelse">Oprindelse: </p>
+                <u>
+                    <p class="pris">Pris: </p>
+                </u>
             </article>
         </template>
+
     </main>
+
 
     <footer>
         <h3>Lavet af Rasmus MOLLER</h3>
@@ -232,6 +326,7 @@
         let retter;
         document.addEventListener("DOMContentLoaded", hentdata);
         const link = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
+        const popup = document.querySelector("#popup");
 
         async function hentdata() {
             const respons = await fetch(link);
@@ -248,7 +343,6 @@
                 if (filter == "alle" || filter == ret.gsx$kategori.$t) {
                     let klon = retTemplate.cloneNode(true).content;
                     klon.querySelector(".kategori").textContent += ret.gsx$kategori.$t;
-                    //                    klon.querySelector(".billede").src = ret.gsx$billede.$t;
                     klon.querySelector(".navn").textContent += ret.gsx$navn.$t;
                     klon.querySelector(".pris").textContent += ret.gsx$pris.$t + "kr.";
                     klon.querySelector(".kort").textContent += ret.gsx$kort.$t;
@@ -256,6 +350,9 @@
                     klon.querySelector(".oprindelse").textContent += ret.gsx$oprindelse.$t;
                     klon.querySelector(".billede").src = `imgs/small/${
                         ret.gsx$billede.$t}` + "-sm.jpg";
+
+                    klon.querySelector("article").addEventListener("click", () => visDetaljer(ret));
+
                     container.appendChild(klon);
 
 
@@ -263,11 +360,30 @@
             })
         }
 
+        function visDetaljer(ret) {
+            popup.style.display = "block";
+            popup.querySelector(".pop_navn").textContent = ret.gsx$navn.$t;
+            popup.querySelector(".pop_pris").textContent = ret.gsx$pris.$t + "kr.";
+            popup.querySelector(".pop_kort").textContent = ret.gsx$kort.$t;
+            popup.querySelector(".pop_lang").textContent = ret.gsx$lang.$t;
+            popup.querySelector(".pop_oprindelse").textContent += ret.gsx$oprindelse.$t;
+            popup.querySelector(".pop_billede").src = `imgs/small/${
+                        ret.gsx$billede.$t}` + "-sm.jpg";
+
+        }
+
         function addEventListenersToButtons() {
             document.querySelectorAll(".filter").forEach((btn) => {
                 btn.addEventListener("click", filterBTNs);
             })
         }
+
+        document.querySelector("#luk").addEventListener("click", lukPopup);
+
+        function lukPopup() {
+            popup.style.display = "none";
+        }
+
 
         function filterBTNs() {
             filter = this.dataset.kategori;
@@ -279,5 +395,8 @@
             visRetter();
 
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
