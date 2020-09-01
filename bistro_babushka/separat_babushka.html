@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BISTRO BABUSHKA</title>
+    <link rel="stylesheet" href="">
+    <link rel="icon" type="image/png" href="pics/putin.png">
+</head>
+
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    @font-face {
+        font-family: russian;
+        src: url(fonts/webfontkit-20200831-062403/russianland-webfont.woff2);
+    }
+
+    @font-face {
+        font-family: russian2;
+        src: url(fonts/font2/russian-webfont.woff2);
+    }
+
+    body {
+        background-color: #ebebeb;
+        scroll-behavior: smooth;
+    }
+
+    header {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        width: 77%;
+
+
+    }
+
+
+    nav button {
+        padding: 20px;
+        text-decoration: none;
+        font-family: "russian2", sans-serif;
+        width: 17vw;
+        font-size: 2rem;
+        text-align: center;
+        cursor: pointer;
+
+    }
+
+    button:hover {
+        color: #313131;
+    }
+
+
+    #liste {
+        width: 90vw;
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-gap: 30px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    }
+
+    .ret {
+        height: auto;
+        width: auto;
+        border: 3px solid rgba(23, 23, 23, 0.03);
+        border-radius: 6px;
+        box-shadow: 3px 3px 3px rgba(114, 114, 114, 0.49);
+
+    }
+
+    main {
+        padding-bottom: 10vw;
+    }
+
+    footer {
+        background-color: red;
+        color: yellow;
+    }
+
+
+    h1 {
+        text-align: center;
+        font-family: "russian", serif;
+        font-size: 10rem;
+        color: yellow;
+        text-shadow: 3px 3px 3px #4d0000;
+        position: relative;
+        top: 6vw;
+
+
+
+
+    }
+
+
+
+    a {
+        text-decoration: none;
+    }
+
+
+    h3 {
+        text-align: center;
+        font-family: "russian2", serif;
+        font-size: 3rem;
+        padding: 5vw;
+        letter-spacing: 5px;
+        text-shadow: 3px 3px 3px #bebdbd;
+
+    }
+
+    h2 {
+        font-family: "Courier New", serif;
+        text-align: center;
+    }
+
+    .navn {
+        text-align: center;
+        font-size: 1.4rem;
+    }
+
+
+    p {
+        font-family: "Courier New", serif;
+        padding: 10px;
+        margin: 10px 0 0 10px;
+    }
+
+    .billede {
+        width: 90%;
+        margin: 5%;
+
+    }
+
+    .valgt {
+        background-color: #000000;
+        color: white;
+    }
+
+    #splash {
+        max-width: none;
+        width: 100%;
+        height: 40vh;
+        background-image: url(https://thehill.com/sites/default/files/article_images/russia-kremlin-getty.jpg);
+        background-size: cover;
+        background-position: 48% 50%;
+    }
+
+
+
+
+
+    @media (max-width: 950px) {
+
+        h1 {
+            font-size: 6.5rem;
+            position: relative;
+            top: 6vw;
+
+        }
+
+        #splash {
+            background-position: 18% 100%;
+            height: 20vh;
+
+
+        }
+
+        nav {
+            width: 77%;
+        }
+
+
+
+        nav button {
+            padding: 10px;
+            font-family: "russian2", sans-serif;
+            width: 100%;
+            font-size: 1.1rem;
+            text-align: center;
+
+        }
+
+        footer h3 {
+            font-size: 2rem;
+
+        }
+
+    }
+</style>
+
+<body>
+    <div id=splash>
+        <a href="bistro_babushka.html">
+            <h1>BISTRO BABUSHKA </h1>
+        </a>
+    </div>
+
+    <header>
+        <nav>
+            <button class="filter valgt" data-kategori="alle">Alle</button>
+            <button class="filter" data-kategori="forretter">Forretter</button>
+            <button class="filter" data-kategori="hovedretter">Hovedretter</button>
+            <button class="filter" data-kategori="desserter">Desserter</button>
+            <button class="filter" data-kategori="drikkevarer">Drikkevarer</button>
+        </nav>
+    </header>
+    <h3>MENUKORT</h3>
+    <section id="liste">
+    </section>
+    <main>
+        <template>
+            <article class="ret">
+                <b>
+                    <p class="navn"></p>
+                </b>
+                <img src="" alt="" class="billede">
+                <p class="kategori">Kategori: </p>
+                <p class="kort">Kort: </p>
+                <p class="lang">Lang: </p>
+                <p class="oprindelse">Oprindelse: </p>
+                <u>
+                    <p class="pris">Pris: </p>
+                </u>
+            </article>
+        </template>
+
+    </main>
+
+
+    <footer>
+        <h3>Lavet af Rasmus MOLLER</h3>
+    </footer>
+
+    <script>
+        let filter = "alle";
+        let retter;
+        document.addEventListener("DOMContentLoaded", hentdata);
+        const link = "https://spreadsheets.google.com/feeds/list/17Dd7DvkPaFamNUdUKlrFgnH6POvBJXac7qyiS6zNRw0/od6/public/values?alt=json";
+
+
+        async function hentdata() {
+            const respons = await fetch(link);
+            retter = await respons.json();
+            addEventListenersToButtons();
+            visRetter();
+        }
+
+        function visRetter() {
+            const container = document.querySelector("#liste");
+            const retTemplate = document.querySelector("template");
+            container.innerHTML = "";
+            retter.feed.entry.forEach(ret => {
+                if (filter == "alle" || filter == ret.gsx$kategori.$t) {
+                    let klon = retTemplate.cloneNode(true).content;
+                    klon.querySelector(".kategori").textContent += ret.gsx$kategori.$t;
+                    klon.querySelector(".navn").textContent += ret.gsx$navn.$t;
+                    klon.querySelector(".pris").textContent += ret.gsx$pris.$t + "kr.";
+                    klon.querySelector(".kort").textContent += ret.gsx$kort.$t;
+                    klon.querySelector(".lang").textContent += ret.gsx$lang.$t;
+                    klon.querySelector(".oprindelse").textContent += ret.gsx$oprindelse.$t;
+                    klon.querySelector(".billede").src = `imgs/small/${
+                        ret.gsx$billede.$t}` + "-sm.jpg";
+                    klon.querySelector("article").addEventListener("click", () => visDetaljer(ret));
+
+                    container.appendChild(klon);
+
+
+                }
+            })
+        }
+
+        function visDetaljer(ret) {
+            console.log(ret);
+            location.href = `babushka_detalje.html?id=${ret.gsx$id.$t}`;
+        }
+
+
+        function addEventListenersToButtons() {
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.addEventListener("click", filterBTNs);
+            })
+        }
+
+
+        function filterBTNs() {
+            filter = this.dataset.kategori;
+            document.querySelector("h3").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.classList.remove("valgt");
+            })
+            this.classList.add("valgt");
+            visRetter();
+
+        }
+    </script>
+</body></html>
