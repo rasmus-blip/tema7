@@ -1,0 +1,172 @@
+  /*alt til undersiden */
+
+
+  * {
+      margin: 0px;
+      padding: 0px;
+  }
+
+  @font-face {
+      font-family: russian;
+      src: url(fonts/webfontkit-20200831-062403/russianland-webfont.woff2);
+  }
+
+  @font-face {
+      font-family: russian2;
+      src: url(fonts/font2/russian-webfont.woff2);
+  }
+
+  body {
+      background-color: #ebebeb;
+      scroll-behavior: smooth;
+  }
+
+
+
+  h1 {
+      text-align: center;
+      font-family: "russian", serif;
+      font-size: 5rem;
+      color: yellow;
+      text-shadow: 3px 3px 3px #4d0000;
+      position: relative;
+      top: 6vw;
+
+
+
+
+  }
+
+
+
+  a {
+      text-decoration: none;
+  }
+
+
+  h3 {
+      text-align: center;
+      font-family: "russian2", serif;
+      font-size: 3rem;
+      padding: 5vw;
+      letter-spacing: 5px;
+      text-shadow: 3px 3px 3px #bebdbd;
+
+  }
+
+  h2 {
+      font-family: "Courier New", serif;
+      text-align: center;
+  }
+
+  .navn {
+      text-align: center;
+      font-size: 1.4rem;
+  }
+
+
+  p {
+      font-family: "Courier New", serif;
+      padding: 10px;
+      margin: 10px 0 0 10px;
+  }
+
+
+  #splash {
+      max-width: none;
+      width: 100%;
+      height: 40vh;
+      background-image: url(https://thehill.com/sites/default/files/article_images/russia-kremlin-getty.jpg);
+      background-size: cover;
+      background-position: 48% 50%;
+  }
+
+  #detalje {
+      width: 100vw;
+      height: 100vh;
+      left: 0;
+      top: 0;
+      position: fixed;
+      background-color: rgba(0, 0, 0, .8);
+      display: flex;
+      justify-content: center;
+
+  }
+
+  #ret {
+      max-width: 60vw;
+      height: 80vh;
+      background-color: white;
+      position: relative;
+      z-index: 1;
+      margin: 5vw;
+      border-radius: 10px;
+
+  }
+
+  #tilbage {
+      position: fixed;
+      top: 10vw;
+      right: 12vw;
+      background-color: #9f9f9f;
+      color: black;
+      border-radius: 5px;
+      padding: 0.5em;
+      font-family: "russian2", sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+  }
+
+  .billede {
+      margin-left: 5vw;
+  }
+
+
+  button {
+      padding: 20px;
+      text-decoration: none;
+      font-family: "russian2", sans-serif;
+      width: 20vw;
+      font-size: 1rem;
+      text-align: center;
+      cursor: pointer;
+
+  }
+
+  button:hover {
+      color: #313131;
+  }
+
+
+
+  @media (max-width: 950px) {
+
+      #ret {
+          width: 90vw;
+      }
+
+      #tilbage {
+          position: fixed;
+          top: 11vw;
+          right: 8vw;
+          background-color: #9f9f9f;
+          color: black;
+          border-radius: 5px;
+          padding: 0.5em;
+          font-family: "russian2", sans-serif;
+          font-size: 1rem;
+          cursor: pointer;
+      }
+
+      .billede {
+          margin-top: 3vw;
+          margin-left: 5vw;
+          max-width: 50vw;
+      }
+
+      h1 {
+          font-size: 6.5rem;
+      }
+
+
+  }

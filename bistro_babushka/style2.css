@@ -1,0 +1,189 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+@font-face {
+    font-family: russian;
+    src: url(fonts/webfontkit-20200831-062403/russianland-webfont.woff2);
+}
+
+@font-face {
+    font-family: russian2;
+    src: url(fonts/font2/russian-webfont.woff2);
+}
+
+body {
+    background-color: #ebebeb;
+    scroll-behavior: smooth;
+}
+
+header {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    width: 77%;
+
+
+}
+
+
+nav button {
+    padding: 20px;
+    text-decoration: none;
+    font-family: "russian2", sans-serif;
+    width: 17vw;
+    font-size: 2rem;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+button:hover {
+    color: #313131;
+}
+
+
+#liste {
+    width: 90vw;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+}
+
+.ret {
+    height: auto;
+    width: auto;
+    border: 3px solid rgba(23, 23, 23, 0.03);
+    border-radius: 6px;
+    box-shadow: 3px 3px 3px rgba(114, 114, 114, 0.49);
+
+}
+
+main {
+    padding-bottom: 10vw;
+}
+
+footer {
+    background-color: red;
+    color: yellow;
+}
+
+
+h1 {
+    text-align: center;
+    font-family: "russian", serif;
+    font-size: 10rem;
+    color: yellow;
+    text-shadow: 3px 3px 3px #4d0000;
+    position: relative;
+    top: 6vw;
+
+
+
+
+}
+
+
+
+a {
+    text-decoration: none;
+}
+
+
+h3 {
+    text-align: center;
+    font-family: "russian2", serif;
+    font-size: 3rem;
+    padding: 5vw;
+    letter-spacing: 5px;
+    text-shadow: 3px 3px 3px #bebdbd;
+
+}
+
+h2 {
+    font-family: "Courier New", serif;
+    text-align: center;
+}
+
+.navn {
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+
+p {
+    font-family: "Courier New", serif;
+    padding: 10px;
+    margin: 10px 0 0 10px;
+}
+
+.billede {
+    width: 90%;
+    margin: 5%;
+
+}
+
+.valgt {
+    background-color: #000000;
+    color: white;
+}
+
+#splash {
+    max-width: none;
+    width: 100%;
+    height: 40vh;
+    background-image: url(https://thehill.com/sites/default/files/article_images/russia-kremlin-getty.jpg);
+    background-size: cover;
+    background-position: 48% 50%;
+}
+
+
+
+
+
+@media (max-width: 950px) {
+
+    h1 {
+        font-size: 6.5rem;
+        position: relative;
+        top: 6vw;
+
+    }
+
+    #splash {
+        background-position: 18% 100%;
+        height: 20vh;
+
+
+    }
+
+    nav {
+        width: 77%;
+    }
+
+
+
+    nav button {
+        padding: 10px;
+        font-family: "russian2", sans-serif;
+        width: 100%;
+        font-size: 1.1rem;
+        text-align: center;
+
+    }
+
+    footer h3 {
+        font-size: 2rem;
+
+    }
+
+}
